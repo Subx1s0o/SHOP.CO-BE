@@ -15,4 +15,16 @@ const createUser = async (req, res) => {
   }
 };
 
-export default { createUser };
+const loginUser = async (req, res) => {
+  try {
+    const result = await authService.login(req.body);
+    res.status(201).json(result);
+  } catch (error) {
+    if (error.statusCode) {
+      res.status(error.statusCode).json({ ...error });
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+};
+export default { createUser, loginUser };

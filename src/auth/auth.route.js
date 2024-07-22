@@ -7,6 +7,7 @@ authRouter.get("/", (req, res) => {
   return res.send("okay");
 });
 
-authRouter.post("/signup", authController.createUser);
+authRouter.post("/sign-up", authController.createUser);
+authRouter.post("/sign-in", authController.loginUser);
 
 export default authRouter;
